@@ -1,0 +1,32 @@
+/* flex je baje najjaci. Zmeri sam flex.  */
+
+.form-group{
+    margin-right: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form{
+    margin-top: 20px;
+    display: flex;
+    border: 1px solid black;
+}
+
+.input{
+    padding: 7px;
+    border: 1px solid rgb(168, 168, 168);
+    border-radius: 5px;
+
+
+}
+
+.gumb{
+    background-color:#dc4c3e;
+    color: white;
+    border: none;
+    margin-left: 10px;
+    border-radius: 7px;
+    padding: 5px 7px;
+    
+
+}
