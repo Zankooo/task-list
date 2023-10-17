@@ -1,0 +1,25 @@
+.task{
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    border: 1px solid black;
+    padding: 5px 15px;
+    border-radius: 10px;
+    justify-content: space-between;
+}
+
+.task > div{
+    margin-left: 10px;
+}
+
+.left{
+    
+    display: flex;
+    flex-direction: row; 
+}
+
+
+
+.left div{ /* div znotraj lefta*/
+    margin-left: 10px;
+}

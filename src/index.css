@@ -13,3 +13,12 @@ body{
   font-family: 'Kanit', sans-serif;
 }
 
+
+.container{
+  max-width: 1024px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+}
+
+

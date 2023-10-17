@@ -1,4 +1,15 @@
 /* flex je baje najjaci. Zmeri sam flex.  */
+.main{
+
+}
+
+.task-list{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+
+}
+
 
 .form-group{
     margin-right: 10px;
@@ -7,6 +18,8 @@
 }
 
 .form{
+    
+    
     margin-top: 20px;
     display: flex;
     border: 1px solid black;
@@ -30,3 +43,4 @@
     
 
 }
+
