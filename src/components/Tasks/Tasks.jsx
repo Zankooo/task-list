@@ -14,7 +14,21 @@ function Tasks() {
     //const dueDat = "";
     const [dueDate, setDueDate] = useState("");
 
-    const [tasks, setTasks] = useState([]);
+    const [tasks, setTasks] = useState(() => {
+      const localTasks = localStorage.getItem("tasks");
+      if (localTasks) {
+        return JSON.parse(localTasks);
+      }
+      else{
+        return [];
+      }
+    });
+
+
+    function resetForm(){
+      setTaskName("");
+      setDueDate(null);
+    }
 
 
    
@@ -29,12 +43,14 @@ function Tasks() {
 
     function handleSubmit(e){
       e.preventDefault(); // da se ne refresha
-      
       const task = {"id" : uuidv4(),"name":taskName, "dueDate":dueDate, "completed":false} // to je objekt
       // v javi se to nardi String name = taskName...
       let newTasks = [...tasks, task]; // to ustvari nov array taskov tako, da vanj da vse iz tasks plus task
       setTasks(newTasks);
-      
+
+      localStorage.setItem("tasks", JSON.stringify(tasks))
+      resetForm();
+  
     }
 
     function renderTask(task){
@@ -46,17 +62,14 @@ function Tasks() {
     function toggleCompleteBanana(id){
       setTasks(currentTasks => {
         return currentTasks.map(function(task){
-        return task.id === id ? {...task, completed: !task.completed} : task;
-        
+          return task.id === id ? {...task, completed: !task.completed} : task;
         })
-      }) 
+      })
+      localStorage.setItem("tasks", JSON.stringify(tasks)) 
+
     }
 
 
-    useEffect(function (){
-      console.log(tasks)
-    }, [tasks]);
-      
 
     function deleteTask(id){
       setTasks(() => {
@@ -64,20 +77,28 @@ function Tasks() {
           return task.id != id;
         })
       })
+      localStorage.setItem("tasks", JSON.stringify(tasks))
     }
+
+
+    useEffect(() => {
+      localStorage.setItem("tasks", JSON.stringify(tasks))
+    }, [tasks])
+      
+    
     
   return (
   <main className='main'>
-    <form action="submit" className='form' onSubmit={handleSubmit}>
+    <form action="submit" className='form'  onSubmit={handleSubmit}>
         <div className='form-group'>
             <label htmlFor='name'>Task name: </label>
-            <input type = "text" name='name' className='input' placeholder='Branko king kong' onChange={changeTaskName}></input>
+            <input type = "text" name='name' className='input' value = {taskName} placeholder='Enter your task...' onChange={changeTaskName}></input>
         </div>
 
 
         <div className='form-group'>
             <label htmlFor="dueDate">Due date: </label>
-            <input type = "date" name='dueDate' className='input' onChange={changeDueDate}></input>
+            <input type = "date" name='dueDate' className='input' value = {taskName} onChange={changeDueDate}></input>
         </div>
 
         <button className='gumb' type='submit'>Dodaj</button>

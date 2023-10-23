@@ -2,11 +2,19 @@
     margin-bottom: 10px;
     display: flex;
     flex-direction: row;
-    border: 1px solid black;
+    border: 1px solid gray;
     padding: 5px 15px;
     border-radius: 10px;
     justify-content: space-between;
+    align-items: center;
+
 }
+
+.task svg:hover{
+    cursor:pointer;
+    color: gray;
+}
+
 
 .task > div{
     margin-left: 10px;
@@ -22,4 +30,10 @@
 
 .left div{ /* div znotraj lefta*/
     margin-left: 10px;
+}
+
+
+.checkbox{
+    cursor: pointer;
+    
 }
